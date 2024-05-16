@@ -131,7 +131,7 @@ Node* DFS(Node* n, int* cont) {
 
     return NULL;
 }
-*/
+
 
 /*
 int main( int argc, char *argv[] ){
