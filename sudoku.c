@@ -118,7 +118,8 @@ Node* DFS(Node* initial, int* cont){
          while (list!=NULL)
             {
                
-               Node* aux2 = (list);
+               Node* aux2 = first(list);
+               popFront(list);
                push(stack,aux2);
             }            
       }

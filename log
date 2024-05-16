@@ -127,3 +127,8 @@ sudoku.c:121:29: error: initialization of ‘Node *’ from incompatible pointer
 cc1: all warnings being treated as errors
 Compilation failed
 fad29b6
+Thu 16 May 2024 07:38:18 PM UTC: 
+ sudoku.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+ tests:  0|0
+80d7291
