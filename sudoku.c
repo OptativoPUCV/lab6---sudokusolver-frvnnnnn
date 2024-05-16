@@ -43,44 +43,26 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* node) {
-    // Calcular la fila y columna de la última casilla colocada (con valor 0)
-    int row = -1, col = -1;
-    for (int i = 0; i < 9 && row == -1; i++) {
-        for (int j = 0; j < 9 && col == -1; j++) {
-            if (node->sudo[i][j] == 0) {
-                row = i;
-                col = j;
-            }
-        }
-    }
-    if (row == -1 || col == -1) {
-        // No se encontró ninguna casilla vacía, el Sudoku está completo
-        return 0;
-    }
-
-    int num = node->sudo[row][col];
-
-    // Verificar la fila y columna
+int is_valid(Node* n) {
+    int rows[9][10] = {0};
+    int cols[9][10] = {0};
+    int submatrices[9][10] = {0};
     for (int i = 0; i < 9; i++) {
-        if (node->sudo[row][i] == num && i != col) {
-            return 0; // El número ya está en la fila
-        }
-        if (node->sudo[i][col] == num && i != row) {
-            return 0; // El número ya está en la columna
-        }
-    }
+        for (int j = 0; j < 9; j++) {
+            int num = n->sudo[i][j];
+            if (num != 0) {
+                if (rows[i][num] == 1) return 0;
+                rows[i][num] = 1;
+                if (cols[j][num] == 1) return 0;
+                cols[j][num] = 1;
 
-    // Verificar la submatriz 3x3
-    int startRow = row - (row % 3);
-    int startCol = col - (col % 3);
-    for (int i = startRow; i < startRow + 3; i++) {
-        for (int j = startCol; j < startCol + 3; j++) {
-            if (node->sudo[i][j] == num && (i != row || j != col)) {
-                return 0;
+                int k = 3 * (i / 3) + (j / 3);
+                if (submatrices[k][num] == 1) return 0; 
+                submatrices[k][num] = 1; 
             }
         }
     }
+
     return 1;
 }
 void copiar(Node * nodo, Node * nodo2){
