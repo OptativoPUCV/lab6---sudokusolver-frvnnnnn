@@ -122,7 +122,7 @@ Node* DFS(Node* initial, int* cont){
                popFront(list);
                push(stack,aux2);
             }
-         free(aux);
+         free(list);
        
       }
   return NULL;
