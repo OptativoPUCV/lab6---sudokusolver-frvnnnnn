@@ -32,3 +32,45 @@ test.c:112:9: error: implicit declaration of function ‘is_valid’; did you me
 cc1: all warnings being treated as errors
 Compilation failed
 0066868
+Thu 16 May 2024 05:15:51 PM UTC: 
+ sudoku.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+test.c: In function ‘test_isvalid’:
+test.c:112:9: error: too few arguments to function ‘is_valid’
+  112 |     if(!is_valid(initial)){
+      |         ^~~~~~~~
+In file included from test.c:5:
+sudoku.c:46:5: note: declared here
+   46 | int is_valid(Node* node, int row, int col, int num) {
+      |     ^~~~~~~~
+test.c:120:8: error: too few arguments to function ‘is_valid’
+  120 |     if(is_valid(initial)){
+      |        ^~~~~~~~
+In file included from test.c:5:
+sudoku.c:46:5: note: declared here
+   46 | int is_valid(Node* node, int row, int col, int num) {
+      |     ^~~~~~~~
+test.c:131:8: error: too few arguments to function ‘is_valid’
+  131 |     if(is_valid(initial)){
+      |        ^~~~~~~~
+In file included from test.c:5:
+sudoku.c:46:5: note: declared here
+   46 | int is_valid(Node* node, int row, int col, int num) {
+      |     ^~~~~~~~
+test.c:141:8: error: too few arguments to function ‘is_valid’
+  141 |     if(is_valid(initial)){
+      |        ^~~~~~~~
+In file included from test.c:5:
+sudoku.c:46:5: note: declared here
+   46 | int is_valid(Node* node, int row, int col, int num) {
+      |     ^~~~~~~~
+test.c: In function ‘test_dfs’:
+test.c:213:9: error: too few arguments to function ‘is_valid’
+  213 |     if(!is_valid(final)){
+      |         ^~~~~~~~
+In file included from test.c:5:
+sudoku.c:46:5: note: declared here
+   46 | int is_valid(Node* node, int row, int col, int num) {
+      |     ^~~~~~~~
+Compilation failed
+cdf89ce
