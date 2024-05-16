@@ -121,7 +121,9 @@ Node* DFS(Node* initial, int* cont){
                Node* aux2 = first(list);
                popFront(list);
                push(stack,aux2);
-            }            
+            }
+         free(aux);
+       
       }
   return NULL;
 }
