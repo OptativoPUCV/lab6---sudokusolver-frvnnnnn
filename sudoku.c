@@ -124,6 +124,7 @@ Node* DFS(Node* initial, int* cont){
             }
          free(aux);
          free(list);
+         free(stack);
          
        
       }
