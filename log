@@ -103,3 +103,16 @@ sudoku.c:109:11: error: unused variable ‘stack’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 1c1d10c
+Thu 16 May 2024 06:48:12 PM UTC: 
+ sudoku.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:113:22: error: void value not ignored as it ought to be
+  113 |          Node* aux = pop(stack);
+      |                      ^~~
+sudoku.c:119:29: error: void value not ignored as it ought to be
+  119 |                Node* aux2 = pop(list);
+      |                             ^~~
+Compilation failed
+c76ae6f
