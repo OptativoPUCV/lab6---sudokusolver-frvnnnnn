@@ -115,17 +115,17 @@ Node* DFS(Node* initial, int* cont){
          if (is_final(current))
             return current;
          List* list = get_adj_nodes(current);
+           Node * adj = first(list);
          while (list!=NULL)
             {
-               Node* current = first(list);
-               popBack(list);
+                adj  = next(list);
                push(stack,current);
             }
-         free(current);
+         free(list);
       }
   return NULL;
 }
-/*
+/*    
 Node* DFS(Node* n, int* cont) {
     Node* stack[100];
     int top = -1;
