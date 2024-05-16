@@ -119,7 +119,7 @@ Node* DFS(Node* initial, int* cont){
          while (list!=NULL)
             {
                 adj  = next(list);
-               push(stack,current);
+               push(stack,adj);
             }
          free(list);
       }

@@ -199,3 +199,8 @@ sudoku.c:118:19: error: variable ‘adj’ set but not used [-Werror=unused-but-
 cc1: all warnings being treated as errors
 Compilation failed
 4452bb5
+Thu 16 May 2024 09:18:43 PM UTC: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  0|0
+b147e1b
