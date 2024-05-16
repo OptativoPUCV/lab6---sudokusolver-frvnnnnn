@@ -43,32 +43,41 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* n){
-
-    return 1;
+int isValid(Node* node, int row, int col, int num) {
+    // Verificar la fila y columna
+    for (int i = 0; i < 9; i++) {
+        if (node->sudo[row][i] == num || node->sudo[i][col] == num) {
+            return 0; // El número ya está en la fila o columna
+        }
+    }
+    // Verificar la submatriz 3x3
+    int startRow = row - (row % 3);
+    int startCol = col - (col % 3);
+    for (int i = startRow; i < startRow + 3; i++) {
+        for (int j = startCol; j < startCol + 3; j++) {
+            if (node->sudo[i][j] == num) {
+                return 0; // El número ya está en la submatriz
+            }
+        }
+    }
+    return 1; // El número es válido en esta posición
 }
-
-
-List* get_adj_nodes(Node* n){
-   List* get_adj_nodes(Node* n) {
-       List* list= createList();
-       for (int i=0; i < 9; i++) {
-           for (int j= 0; j < 9; j++) {
-               if (n->sudo[i][j] ==0) {
-                  for (int num = 1; num <=9; num++) {
-                       if (isValid(n, i,j,num)) {
-                           Node* newNode = createNode(n->sudo);
-                           newNode->sudo[i][j] = num;
-                           addToList(list, newNode);
-                       }
-                   }return list;
-               }
-           }
-       }
-       return list;
-   }
+List* get_adj_nodes(Node* n) {
+    List* list = createList();
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+         if (n->sudo[i][j] == 0) { 
+                for(int num = 1; num <= 9; num++) {
+                    if (isValid(n,i,j, num)) {
+                        Node* newNode= createNode(n->sudo);
+                        newNode->sudo[i][j]= num;
+                        pushBack(list,newNode);
+                  }
+                } return list;
+            }
+        }
+    }return list;
 }
-
 
 int is_final(Node* n){
     return 0;

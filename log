@@ -21,3 +21,14 @@ sudoku.c:53:10: error: ‘get_adj_nodes’ defined but not used [-Werror=unused-
 cc1: all warnings being treated as errors
 Compilation failed
 e5e1511
+Thu 16 May 2024 05:14:48 PM UTC: 
+ sudoku.c | 31 ++++++++++++++++++++-----------
+ 1 file changed, 20 insertions(+), 11 deletions(-)
+test.c: In function ‘test_isvalid’:
+test.c:112:9: error: implicit declaration of function ‘is_valid’; did you mean ‘isValid’? [-Werror=implicit-function-declaration]
+  112 |     if(!is_valid(initial)){
+      |         ^~~~~~~~
+      |         isValid
+cc1: all warnings being treated as errors
+Compilation failed
+0066868
