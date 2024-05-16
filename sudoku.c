@@ -118,7 +118,7 @@ Node* DFS(Node* initial, int* cont){
          while (list!=NULL)
             {
                Node* current = first(list);
-               popFront(list);
+               popBack(list);
                push(stack,current);
             }
          free(current);
