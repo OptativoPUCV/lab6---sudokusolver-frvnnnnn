@@ -110,13 +110,15 @@ Node* DFS(Node* initial, int* cont){
    push(stack, initial);
    while(get_size(stack) != 0)
       {
-         Node* aux = pop(stack);
+         Node* aux = top(stack);
+         pop(stack);
          if (is_final(aux))
             return aux;
          List* list = get_adj_nodes(aux);
          while (list!=NULL)
             {
-               Node* aux2 = pop(list);
+               
+               Node* aux2 = (list);
                push(stack,aux2);
             }            
       }
