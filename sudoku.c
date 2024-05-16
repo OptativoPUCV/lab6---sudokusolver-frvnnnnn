@@ -43,40 +43,74 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* node, int row, int col, int num) {
-    // Verificar la fila y columna
-    for (int i = 0; i < 9; i++) {
-        if (node->sudo[row][i] == num || node->sudo[i][col] == num) {
-            return 0; // El número ya está en la fila o columna
+int is_valid(Node* node) {
+    // Calcular la fila y columna de la última casilla colocada (con valor 0)
+    int row = -1, col = -1;
+    for (int i = 0; i < 9 && row == -1; i++) {
+        for (int j = 0; j < 9 && col == -1; j++) {
+            if (node->sudo[i][j] == 0) {
+                row = i;
+                col = j;
+            }
         }
     }
+    if (row == -1 || col == -1) {
+        // No se encontró ninguna casilla vacía, el Sudoku está completo
+        return 0;
+    }
+
+    int num = node->sudo[row][col];
+
+    // Verificar la fila y columna
+    for (int i = 0; i < 9; i++) {
+        if (node->sudo[row][i] == num && i != col) {
+            return 0; // El número ya está en la fila
+        }
+        if (node->sudo[i][col] == num && i != row) {
+            return 0; // El número ya está en la columna
+        }
+    }
+
     // Verificar la submatriz 3x3
     int startRow = row - (row % 3);
     int startCol = col - (col % 3);
     for (int i = startRow; i < startRow + 3; i++) {
         for (int j = startCol; j < startCol + 3; j++) {
-            if (node->sudo[i][j] == num) {
-                return 0; // El número ya está en la submatriz
+            if (node->sudo[i][j] == num && (i != row || j != col)) {
+                return 0;
             }
         }
     }
-    return 1; // El número es válido en esta posición
+    return 1;
 }
+void copiar(Node * nodo, Node * nodo2){
+   for (int row = 0; row < 9; row++) {
+        for (int col = 0; col < 9; col++) {
+            nodo->sudo[row][col] = nodo2->sudo[row][col];
+        }
+    }
+}
+
 List* get_adj_nodes(Node* n) {
     List* list = createList();
     for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {
-         if (n->sudo[i][j] == 0) { 
-                for(int num = 1; num <= 9; num++) {
-                    if (is_valid(n,i,j, num)) {
-                        Node* newNode= createNode(n->sudo);
-                        newNode->sudo[i][j]= num;
-                        pushBack(list,newNode);
-                  }
-                } return list;
+            if (n->sudo[i][j] == 0) { // Casilla vacía
+                for (int num = 1; num <= 9; num++) {
+                    Node* newNode = createNode();
+                     copiar(newNode,n);
+                    newNode->sudo[i][j] = num; 
+                    if (is_valid(newNode)) {
+                        pushBack(list, newNode);
+                    } else {
+                        free(newNode);
+                    }
+                }
+                return list; // Solo se permite una acción por cada casilla vacía
             }
         }
-    }return list;
+    }
+    return list; // No hay nodos adyacentes (tablero resuelto o error en la entrada)
 }
 
 int is_final(Node* n){
