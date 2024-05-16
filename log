@@ -1,0 +1,23 @@
+Thu 16 May 2024 05:01:02 PM UTC: 
+ sudoku.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+In file included from test.c:5:
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:59:28: error: implicit declaration of function ‘isValid’; did you mean ‘is_valid’? [-Werror=implicit-function-declaration]
+   59 |                        if (isValid(n, i,j,num)) {
+      |                            ^~~~~~~
+      |                            is_valid
+sudoku.c:62:28: error: implicit declaration of function ‘addToList’ [-Werror=implicit-function-declaration]
+   62 |                            addToList(list, newNode);
+      |                            ^~~~~~~~~
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:70:1: error: control reaches end of non-void function [-Werror=return-type]
+   70 | }
+      | ^
+At top level:
+sudoku.c:53:10: error: ‘get_adj_nodes’ defined but not used [-Werror=unused-function]
+   53 |    List* get_adj_nodes(Node* n) {
+      |          ^~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+e5e1511
